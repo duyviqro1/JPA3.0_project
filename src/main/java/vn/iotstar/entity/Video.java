@@ -21,13 +21,13 @@ public class Video implements Serializable{
 	private String videoId;
 	
 	@Column(name="Active")
-	private int avtive;
+	private int active;
 	
 	@Column(name="Description", columnDefinition = "NVARCHAR(500) NULL")
 	private String description;
 	
 	@Column(name="Poster", columnDefinition = "NVARCHAR(500) NULL")
-	private String poster;
+	private String images;
 	
 	@Column(name="Title", columnDefinition = "NVARCHAR(500) NULL")
 	private String title;
@@ -38,6 +38,5 @@ public class Video implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="CategoryId")
 	private Category category;
-	
 	
 }
