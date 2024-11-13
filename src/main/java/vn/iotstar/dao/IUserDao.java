@@ -21,4 +21,9 @@ public interface IUserDao {
 
 	List<User> searchByName(String uname);
 
+	User findByEmail(String email) throws Exception;
+
+	User findByPhone(String phone);
+
+
 }

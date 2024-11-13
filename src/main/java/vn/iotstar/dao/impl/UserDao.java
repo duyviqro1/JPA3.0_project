@@ -120,4 +120,39 @@ public class UserDao implements IUserDao{
 		return query.getResultList();
 	}
 
+	@Override
+	public User findByEmail(String email) throws Exception {
+		EntityManager enma = JPAConfig.getEntityManager();
+		String jpql = "SELECT u FROM User u WHERE u.email =:email";
+		try {
+			TypedQuery<User> query = enma.createQuery(jpql, User.class);
+			query.setParameter("email", email);
+			User user = query.getSingleResult();
+			if (user == null) {
+				throw new Exception("Email đã tồn tại");
+			}
+			return user;
+		} finally {
+			enma.close();
+
+		}
+	}
+
+	@Override
+	public User findByPhone(String phone) {
+		EntityManager enma = JPAConfig.getEntityManager();
+	    String jpql = "SELECT u FROM User u WHERE u.phone = :phone";
+	    try {
+	        TypedQuery<User> query = enma.createQuery(jpql, User.class);
+	        query.setParameter("phone", phone);
+	        return query.getSingleResult(); // Trả về user đầu tiên tìm thấy
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return null; // Nếu không tìm thấy người dùng, trả về null
+	    } finally {
+	        enma.close();
+	    }
+	
+	}
+
 }

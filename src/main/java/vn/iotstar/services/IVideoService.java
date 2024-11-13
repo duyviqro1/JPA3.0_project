@@ -20,4 +20,6 @@ public interface IVideoService {
 	void insert(Video video);
 
 	List<Video> searchByTitle(String keyword);
+
+	List<Video> findByCategoryId(int cateid);
 }

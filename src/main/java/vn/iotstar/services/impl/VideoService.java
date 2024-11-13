@@ -68,4 +68,9 @@ public class VideoService implements IVideoService{
 		return videoDao.searchByTitle(keyword);
 	}
 
+	@Override
+	public List<Video> findByCategoryId(int cateid) {
+		return videoDao.findByCategoryId(cateid);
+	}
+
 }

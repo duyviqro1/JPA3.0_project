@@ -3,6 +3,7 @@
     <%@ taglib prefix ="c" uri = "jakarta.tags.core" %>
     
 <form action="${pageContext.request.contextPath}/admin/category/update" method="post" enctype = "multipart/form-data">
+
 <input type="text" id="CategoryId" name="CategoryId" value = "${cate.categoryId }" hidden = "hidden">
 	<label for="Categoryname">Category Name:</label>
 	<br> 

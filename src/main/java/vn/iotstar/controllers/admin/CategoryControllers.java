@@ -33,11 +33,25 @@ public class CategoryControllers extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 
-		if (url.contains("categories")) {
+		int pageSize = 6; // Thiết lập page size là 6
+	    int currentPage = 1;
 
-			List<Category> list = cateService.findAll();
-			req.setAttribute("listcate", list);
-			req.getRequestDispatcher("/view/admin/category-list.jsp").forward(req, resp);
+	    // Lấy thông tin trang hiện tại từ request (nếu có)
+	    String pageParam = req.getParameter("page");
+	    if (pageParam != null) {
+	        currentPage = Integer.parseInt(pageParam);
+	    }
+		if (url.contains("categories")) {
+			
+			List<Category> list = cateService.findAll(currentPage - 1, pageSize); 
+	        int totalItems = cateService.count();
+	        int totalPages = (int) Math.ceil((double) totalItems / pageSize);
+
+	        req.setAttribute("listcate", list);
+	        req.setAttribute("currentPage", currentPage);
+	        req.setAttribute("totalPages", totalPages);
+	        req.setAttribute("pageSize", pageSize);
+	        req.getRequestDispatcher("/view/admin/category-list.jsp").forward(req, resp);
 
 		} else if (url.contains("add")) {
 			req.getRequestDispatcher("/view/admin/category-add.jsp").forward(req, resp);

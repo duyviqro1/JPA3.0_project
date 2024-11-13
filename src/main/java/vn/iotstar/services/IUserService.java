@@ -21,4 +21,11 @@ public interface IUserService {
 
 	List<User> searchByName(String user);
 
+	User login(String username, String password) throws Exception;
+
+	boolean checkExistEmail(String email);
+
+	boolean checkExistPhone(String phone);
+
+	boolean register(String email, String password, String fullname, String phone, String username);
 }

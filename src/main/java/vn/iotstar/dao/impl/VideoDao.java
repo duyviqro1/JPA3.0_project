@@ -120,4 +120,13 @@ public class VideoDao implements IVideoDao{
 		return query.getResultList();
 	}
 
+	@Override
+	public List<Video> findByCategoryId(int cateid) {
+		EntityManager enma = JPAConfig.getEntityManager();
+		String jpql = "SELECT v FROM Video v WHERE v.category.categoryId = :cateid";
+		TypedQuery<Video> query = enma.createQuery(jpql, Video.class);
+		query.setParameter("cateid", cateid);
+		return query.getResultList();
+	}
+
 }

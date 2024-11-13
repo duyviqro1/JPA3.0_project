@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri ="jakarta.tags.core" %>
 
-<a href="${pageContext.request.contextPath}/admin/video/add">Add Video</a>
+<a href="${pageContext.request.contextPath}/admin/video/add">Add Video</a> |
+<a href="${pageContext.request.contextPath}/admin/video/by-category">xem theo category</a>
 <table border ="1" width="100%">
 	<tr>
 		<th>STT</th>
@@ -54,7 +55,9 @@
 			
 			<td><a
 				href="<c:url value='/admin/video/edit?id=${video.videoId }'/>">Sửa</a>| <a
-				href="<c:url value='/admin/video/delete?id=${video.videoId }'/>">Xóa</a></td>
+				href="<c:url value='/admin/video/delete?id=${video.videoId }'/>">Xóa</a> |
+				<a href="<c:url value='/admin/video/detail?id=${video.videoId}'/>">Xem chi tiết</a>
+				</td>
 		</tr>
 	</c:forEach>
 
